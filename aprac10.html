@@ -1,0 +1,213 @@
+Create a web application to demonstrate JS Bootstrap Button.<br>
+<br>
+Default.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="P10A.WebForm1" %><br>
+    < !DOCTYPE html><br>
+    < html xmlns="http://www.w3.org/1999/xhtml"><br>
+<br>
+    < head runat="server"><br>
+        < title>Bootstrap example< /title><br>
+        < meta charset="utf-8"><br>
+        < meta name="viewport" content="width=device-width, initial-scale=1"><br>
+        < link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><br>
+        < script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"><br>
+        < /script><br>
+        < script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"><br>
+        < /script><br>
+    < /head><br>
+<br>
+    < body><br>
+        < form id="form1" runat="server"><br>
+            < div><br>
+                < strong>Bootsrap Button Styles in web Page< br /><br>
+                    < br /><br>
+                < /strong><br>
+            < /div><br>
+            < asp:Button ID="Button1" runat="server" CssClass="btn-primary" Text=".btn-primary" /><br>
+            < asp:Button ID="Button2" runat="server" CssClass="btn-warning" Text=".btn-warning" /><br>
+            < br /><br>
+            < br /><br>
+            < asp:Button ID="Button4" runat="server" CssClass="btn-danger" Text=".btn-danger" Width="112px" /><br>
+            < br /><br>
+            < br /><br>
+            < asp:Button ID="Button5" runat="server" CssClass="btn-primary disabled" Text=",btn-disabled" /><br>
+            < asp:Button ID="Button6" runat="server" CssClass="btn-primary active" Text=".active" /><br>
+            < br /><br>
+            < br /><br>
+            < asp:Button ID="Button7" runat="server" CssClass="btn-primary btn-lg" Text=".btn-lg" /><br>
+            < asp:Button ID="Button8" runat="server" Text=".btn.xs" CssClass="btn-primary btn-xs" /><br>
+            < br /><br>
+            < br /><br>
+            < asp:Button ID="Button9" runat="server" Text=".btn-block" CssClass="btn-primary btn-block" /><br>
+        < /form><br>
+    < /body><br>
+<br>
+    < /html><br>
+
+<br>
+<br>
+<br>
+
+    Practical 10(B)<br>
+    Create a web application to demonstrate use of various Ajax controls.<br>
+<br>
+    Default.aspx<br>
+    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="P10A.WebForm1" %><br>
+<br>
+        < !DOCTYPE html><br>
+        < html><br>
+<br>
+        < head runat="server"><br>
+            < title>< /title><br>
+        < /head><br>
+<br>
+        < body><br>
+            < form id="form1" runat="server"><br>
+                < div><br>
+                    < asp:ScriptManager ID="ScriptManager1" runat="server"><br>
+                    < /asp:ScriptManager><br>
+                    < br /><br>
+                    < br /><br>
+                    < asp:UpdatePanel ID="UpdatePanel1" runat="server"><br>
+                        < ContentTemplate><br>
+                            < asp:Button ID="Button1" runat="server" OnClick="Button1_Click"<br>
+                                Text="Partial Postback Button" /><br>
+                            < br /><br>
+                            < br /><br>
+                            < asp:Label ID="Label1" runat="server" Text="Label for Partial Postback Time">< /asp:Label><br>
+                        < /ContentTemplate><br>
+                    < /asp:UpdatePanel><br>
+                < /div><br>
+                < p><br>
+                    &nbsp;< /p><br>
+                < p><br>
+                    < asp:Label ID="Label3" runat="server" Text="Outside the update pannel">< /asp:Label><br>
+                < /p><br>
+                < p><br>
+                    &nbsp;</p><br>
+                < asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Total Postback" /><br>
+                < br /><br>
+                < br /><br>
+                < asp:Label ID="Label2" runat="server" Text="Label for total postback time">< /asp:Label><br>
+            < /form><br>
+        < /body><br>
+<br>
+        < /html><br>
+<br>
+        Default.aspx.cs<br>
+        using System;<br>
+        using System.Collections.Generic;<br>
+        using System.Linq;<br>
+        using System.Web;<br>
+        using System.Web.UI;<br>
+        using System.Web.UI.WebControls;<br>
+<br>
+        namespace P10A<br>
+        {<br>
+        public partial class WebForm1 : System.Web.UI.Page<br>
+        {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+<br>
+        }<br>
+<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+        string time = DateTime.Now.ToLongTimeString();<br>
+<br>
+        Label1.Text = "Showing time from panel" + time;<br>
+<br>
+        Label2.Text = "Showing time from outside" + time;<br>
+        }<br>
+        protected void Button2_Click(object sender, EventArgs e)<br>
+        {<br>
+        string time = DateTime.Now.ToLongTimeString();<br>
+        Label1.Text = "Showing time from panel" + time;<br>
+<br>
+        Label2.Text = "Showing time from outside" + time;<br>
+        }<br>
+        }<br>
+        }<br>
+<br>
+<br>
+<br>
+        PARTIAL POSTBACK BUTTON<br>
+<br>
+<br>
+        TOTAL POSTBACK <br>
+<br>
+<br>
+<br>
+<br>
+        Practical 10(C)<br>
+        Create a web application to demonstrate Installation and use of NuGet package.<br>
+<br>
+        Default.aspx<br>
+        <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="P10A.WebForm1" %><br>
+            < !DOCTYPE html><br>
+            < html><br>
+<br>
+            < head runat="server"><br>
+                < title>< /title><br>
+            < /head><br>
+<br>
+            < body><br>
+                < form id="form1" runat="server"><br>
+                    < div><br>
+                        < br /><br>
+                        < br /><br>
+                        < br /><br>
+                        < br /><br>
+                        < asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="nuget Demo" /><br>
+                        < br /><br>
+                        < br /><br>
+                        < br /><br>
+                        &nbsp;&nbsp;&nbsp;<br>
+                        < asp:Label ID="Label1" runat="server" Font-Bold="False" Text="Label">< /asp:Label><br>
+                        < br /><br>
+                    < /div><br>
+                < /form><br>
+            < /body><br>
+<br>
+            < /html><br>
+<br>
+            Default.aspx.cs<br>
+            using Newtonsoft.Json;<br>
+            using System;<br>
+            using System.Collections.Generic;<br>
+            using System.Linq;<br>
+            using System.Reflection.Emit;<br>
+            using System.Security.Principal;<br>
+            using System.Web;<br>
+            using System.Web.UI;<br>
+            using System.Web.UI.WebControls;<br>
+<br>
+            namespace P10A<br>
+            {<br>
+            public partial class WebForm1 : System.Web.UI.Page<br>
+            {<br>
+            protected void Page_Load(object sender, EventArgs e)<br>
+            {<br>
+<br>
+            }<br>
+<br>
+            protected void Button1_Click(object sender, EventArgs e)<br>
+            {<br>
+            Account account = new Account<br>
+            {<br>
+            Name = "saurav singh",<br>
+            Email = "sks@microsoft.com",<br>
+            DOB = new DateTime(1982, 12, 13, 0, 0, 0, DateTimeKind.Local),<br>
+            };<br>
+            string json =<br>
+            JsonConvert.SerializeObject(account, Newtonsoft.Json.Formatting.Indented);<br>
+            Label1.Text = json;<br>
+            }<br>
+            }<br>
+            public class Account // Ensure this class is defined<br>
+            {<br>
+            public string Name { get; set; }<br>
+            public string Email { get; set; }<br>
+            public DateTime DOB { get; set; }<br>
+            }<br>
+            }<br>

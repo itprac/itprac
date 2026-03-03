@@ -1,0 +1,308 @@
+Aim: Create a simple web page with various server controls to demonstrate setting and use of their  properties. (example AutoPostBack<br>
+<br>
+DEFAULT.ASPX<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="practical_2.WebForm1" %><br>
+< !DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+    < div><br>
+               Pranjali Chaudhari & nbsp;& nbsp;& nbsp; < br /><br>
+        < br /><br>
+        Enter Name:<br>
+        < asp:TextBox ID="TextBox1" runat="server" ontextchanged="TextBox1_TextChanged">< /asp:TextBox><br>
+        < br /><br>
+        < br /><br>
+        Enter age:<br>
+< asp:TextBox ID="TextBox2" runat="server" MaxLength="2" Width="29px">< /asp:TextBox><br>
+        < br /><br>
+        < br /><br>
+        Select Gender: <br>
+        < asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True"><br>
+            < asp:ListItem>Male< /asp:ListItem><br>
+            < asp:ListItem>Female< /asp:ListItem><br>
+        < /asp:RadioButtonList><br>
+        < br /><br>
+       Select Hobbies:<br>
+        < br /><br>
+        < asp:CheckBoxList ID="CheckBoxList1" runat="server" AutoPostBack="True"><br>
+            < asp:ListItem>Reading< /asp:ListItem><br>
+            < asp:ListItem>Dancing< /asp:ListItem><br>
+            < asp:ListItem>Playing< /asp:ListItem><br>
+        < /asp:CheckBoxList><br>
+        < br /><br><br>
+        < asp:Image ID="Image1" runat="server" Height="300px" ImageUrl="~/sunset.jpg" /><br>
+        < br /><br>
+        < br /><br>
+        Select City:  <br>
+        < asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True"><br>
+            < asp:ListItem>Mumbai< /asp:ListItem><br>
+            < asp:ListItem>Goa< /asp:ListItem><br>
+            < asp:ListItem>Delhi< /asp:ListItem><br>
+        < /asp:ListBox><br>
+        < br /><br>
+        < br /><br>
+        Select country:<br>
+        < asp:DropDownList ID="DropDownList1" runat="server"><br>
+            < asp:ListItem>India< /asp:ListItem><br>
+            < asp:ListItem>London< /asp:ListItem><br>
+            < asp:ListItem>USA< /asp:ListItem><br>
+        < /asp:DropDownList><br>
+        < br /><br>
+        < br /><br>
+        < asp:Button ID="Button1" runat="server" onclick="Button1_Click" <br>
+            Text="Display" /><br>
+        < br /><br>
+        < br /><br>
+        < asp:Label ID="Label1" runat="server" Text="Label">< /asp:Label><br>
+        < br /><br>
+        < asp:Label ID="Label2" runat="server" Text="Label">< /asp:Label><br>
+        < br /><br>
+        < asp:Label ID="Label3" runat="server" Text="Label">< /asp:Label><br>
+        < br /><br>
+        < asp:Label ID="Label4" runat="server" Text="Label">< /asp:Label><br>
+        < br /><br>
+        < asp:Label ID="Label5" runat="server" Text="Label">< /asp:Label><br>
+        < br /><br>
+        < asp:Label ID="Label6" runat="server" Text="Label">< /asp:Label><br>
+        < br /><br>
+    < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+<br>
+      	DEFAULT.ASPX.CS<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Reflection.Emit;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+namespace practical_2<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+         {<br>
+<br>
+         }<br>
+         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)<br>
+         {<br>
+<br>
+         }<br>
+         protected void TextBox1_TextChanged(object sender, EventArgs e)<br>
+         {<br>
+<br>
+         }<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            Label1.Text = TextBox1.Text;<br>
+            Label2.Text = TextBox2.Text;<br>
+            Label3.Text = RadioButtonList1.SelectedValue;<br>
+            Label4.Text = CheckBoxList1.SelectedValue;<br>
+            Label5.Text = ListBox1.SelectedItem.Value;<br>
+            Label6.Text = DropDownList1.SelectedItem.Value;<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+Output:<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Practical 3(B)<br>
+Aim: Create a simple application to demonstrate your vacation using calendar control.<br>
+<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="practical_2.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+< form id="form1" runat="server"><br>
+< div><br>
+< h2> Vacation Planner< /h2><br>
+< br /><br>
+< asp:Label ID="Label1" runat="server" Text="Select your vacation start date:">< /asp:Label><br>
+< br /><br>
+< br /><br>
+< asp:Calendar ID="Calendar1" runat="server"OnSelectionChanged="Calender1_SelectionChanged">< /asp:Calendar><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label2" runat="server" Text="Vacation Details:">< /asp:Label><br>
+< br /><br>
+< asp:TextBox ID="TextBoxDetails" runat="server" Rows="5" TextMode="MultiLine">< /asp:TextBox><br>
+< br /><br>
+< asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Save Vacation" /><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="LabelResult" runat="server">< /asp:Label><br>
+< /div><br>
+< /form><br>
+< /body><br>
+< /html><br>
+<br>
+Default.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+namespace practical_2<br>
+{<br>
+public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+<br>
+        }<br>
+        protected void Calender1_SelectionChanged(object sender, EventArgs e)<br>
+        {<br>
+            LabelResult.Text = "You selected:" + Calendar1.SelectedDate.ToShortDateString();<br>
+        }<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            string vacationDate = Calendar1.SelectedDate.ToShortDateString();<br>
+            string vacationDetails = TextBoxDetails.Text;<br>
+            if (string.IsNullOrEmpty(vacationDetails))<br>
+            {<br>
+                LabelResult.Text = "Please enter vacation details.";<br>
+            }<br>
+            else<br>
+            {<br>
+                LabelResult.Text = $"Vacation on {vacationDate}:{vacationDetails}";<br>
+            }<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+<br>
+OR<br>
+<br>
+Default.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="p3bcalendar.WebForm1" %><br>
+<br>
+< !DOCTYPE html><br>
+< br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+     < form id="form1" runat="server"> <br>
+        < div> <br>
+            < asp:Calendar ID="Calendar" runat="server" BackColor="White" BorderColor="#3366CC"BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" FontSize="8pt" ForeColor="#003399" Height="200px" OnDayRender="Calendar_DayRender" OnSelectionChanged="Calendar_SelectionChanged" Width="220px"> <br>
+                < DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" /> <br>
+                < NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" /> <br>
+                < OtherMonthDayStyle ForeColor="#999999" /> <br>
+                < SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" /> <br>
+                < SelectorStyle BackColor="#99CCCC" ForeColor="#336666" /> <br>
+                < TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" /> <br>
+                < TodayDayStyle BackColor="#99CCCC" ForeColor="White" /> <br>
+                < WeekendDayStyle BackColor="#CCCCFF" /> <br>
+            < /asp:Calendar> <br>
+            < br /> <br>
+        < /div> <br>
+        < asp:Label ID="Label1" runat="server" Text="Label 1">< /asp:Label> <br>
+        < br /> <br>
+        < asp:Label ID="Label2" runat="server" Text="Label 2">< /asp:Label> <br>
+        < br /> <br>
+        < asp:Label ID="Label3" runat="server" Text="Label 3">< /asp:Label> <br>
+        < br /> <br>
+        < asp:Label ID="Label4" runat="server" Text="Label 4">< /asp:Label> <br>
+        < br /> <br>
+        < br /> <br>
+        < br /> <br>
+        < asp:Button ID="btnDisplay" runat="server" OnClick="btnDisplay_Click" Text="DISPLAY" /> <br>
+& nbsp;& nbsp;& nbsp;& nbsp;& nbsp; <br>
+        < asp:Button ID="btnReset" runat="server" OnClick="Button2_Click" Text="RESET" /> <br>
+        < br /> <br>
+    < /form> <br>
+< /body> <br>
+< /html><br>
+<br>
+    <br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+<br>
+namespace p3bcalendar<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+<br>
+        }<br>
+        protected void Calendar_SelectionChanged(object sender, EventArgs e)<br>
+        {<br>
+            Label1.Text = "you have selected." + Calendar.SelectedDate.ToString();<br>
+        }<br>
+        protected void btnDisplay_Click(object sender, EventArgs e)<br>
+        {<br>
+            Calendar.Caption = "It's my calendar.";  // Fixed typo: "calender" to "calendar"<br>
+            Calendar.TitleFormat = TitleFormat.MonthYear;<br>
+            Calendar.NextPrevFormat = NextPrevFormat.FullMonth;<br>
+            Calendar.FirstDayOfWeek = FirstDayOfWeek.Monday;<br>
+<br>
+            Label2.Text = "Today's Date: " + Calendar.TodaysDate.ToShortDateString();  // Added space after "Today's Date"<br>
+            TimeSpan d = new DateTime(2025, 8, 27) - DateTime.Now;<br>
+            Label3.Text = "Days Remaining: " + d.Days.ToString();  // Only show days remaining as an integer<br>
+<br>
+            TimeSpan b = new DateTime(2025, 1, 1) - DateTime.Now;<br>
+            Label4.Text = "Days Remaining: " + b.Days.ToString();  // Only show days remaining<br>
+<br>
+        }<br>
+        protected void Calendar_DayRender(object sender, DayRenderEventArgs e)<br>
+        {<br>
+            if (e.Day.Date.Day == 5 && e.Day.Date.Month == 10)<br>
+            {<br>
+                e.Cell.BackColor = System.Drawing.Color.Crimson;<br>
+                Label l6 = new Label();<br>
+                l6.Text = "<br> Teacher's Day!";<br>
+                e.Cell.Controls.Add(l6);<br>
+            }<br>
+            if (e.Day.Date.Day == 27 && e.Day.Date.Month == 8)<br>
+            {<br>
+                Calendar.SelectedDate = new DateTime(2025, 8, 27);<br>
+                Calendar.SelectedDates.SelectRange(Calendar.SelectedDate,<br>
+                Calendar.SelectedDate.AddDays(10));<br>
+                Label l7 = new Label();<br>
+                l7.Text = "<br>Bappa Morya!!";<br>
+                e.Cell.Controls.Add(l7);<br>
+                Image g1 = new Image();<br>
+                g1.ImageUrl = "ganesh.jpg";<br>
+                g1.Height = 40;<br>
+                g1.Width = 40;<br>
+                e.Cell.Controls.Add(g1);<br>
+            }<br>
+<br>
+        }<br>
+        protected void Button2_Click(object sender, EventArgs e)<br>
+        {<br>
+            Label1.Text = " ";<br>
+            Label2.Text = " ";<br>
+            Label3.Text = " ";<br>
+            Label4.Text = " ";<br>
+            Calendar.SelectedDates.Clear();<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+Practical 3(C)<br>
+Aim:  Demonstrate the use of treeview operations on the web form.<br>
+<br>
+<br><br>

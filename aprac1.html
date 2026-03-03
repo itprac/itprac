@@ -1,0 +1,243 @@
+Aim: Create a application to print on screen the output of addition, subtraction, multiplication, division of two numbers entered by the user in c#.<br>
+<br>
+Default.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs"<br>
+Inherits="pratical1a.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+< title>< /title><br>
+< /head><br>
+< body><br>
+< form id="form1" runat="server"><br>
+< div><br>
+< asp:Label ID="Label5" runat="server" Text="Enter Number 1:"> < /asp:Label><br>
+& nbsp;<br>
+< asp:TextBox ID="TextBox1" runat="server">< /asp:TextBox><br>
+< br /><br>
+< br ><br>
+< asp:Label ID="Label6" runat="server" Text="Enter Number 2:"> < /asp:Label><br>
+& nbsp;<br>
+& nbsp;<br>
+& nbsp;<br>
+< asp:TextBox ID="TextBox2" runat="server">< /asp:TextBox><br>
+< br /><br>
+< br /><br>
+< asp:Button ID="Button1" runat="server" OnClientClick="submit_click" Text="Results"<br>OnClick="Button1_Click" /><br>
+< br /><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label1" runat="server" Text="Addition is :">< /asp:Label><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label2" runat="server" Text="Subtraction is :">< /asp:Label><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label3" runat="server" Text="Multiplication is :">< /asp:Label><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label4" runat="server" Text="Division is :">< /asp:Label><br>
+< /div><br>
+< /form><br>
+< /body><br>
+< /html><br>
+<br>
+Default.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Reflection.Emit;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+<br>
+namespace pratical1a<br>
+{<br>
+public partial class WebForm1 : System.Web.UI.Page<br>
+{<br>
+protected void Page_Load(object sender, EventArgs e)<br>
+{<br>
+}<br>
+protected void Button1_Click(object sender, EventArgs e)<br>
+{<br>
+int addition, subtraction, multiplication, division;<br>
+addition= Convert.ToInt32(TextBox1.Text) + Convert.ToInt32(TextBox2.Text);<br>
+subtraction = Convert.ToInt32(TextBox1.Text) - Convert.ToInt32(TextBox2.Text);<br>
+multiplication = Convert.ToInt32(TextBox1.Text) * Convert.ToInt32(TextBox2.Text);<br>
+division = Convert.ToInt32(TextBox1.Text) / Convert.ToInt32(TextBox2.Text);<br>
+Label1.Text = "Addition of the number is: " + addition;<br>
+Label2.Text = " Subtraction of the number is: " + subtraction;<br>
+Label3.Text = "Multiplication of the number is: " + multiplication;<br>
+Label4.Text = "Division of the number is: " + division;<br>
+} <br>
+    }<br>
+ }<br>
+<br>
+<br>
+PRACTICAL 1(B)<br>
+<br>
+Aim:  Create a application to print Floyd’s triangle till n rows in C#<br>
+<br>
+Default.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Practical_1a.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+ < title></title><br>
+< /head><br>
+< body><br>
+< form id="form1" runat="server"><br>
+< div><br>
+< asp:Label ID="Label1" runat="server" Text="Floyd's triangle"></ asp:Label><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label2" runat="server" Text="Enter Number of Rows:"></ asp:Label><br>
+& nbsp;<br>
+< asp:TextBox ID="TextBox1" runat="server"></ asp:TextBox><br>
+< br /><br>
+< br /><br>
+< asp:Button ID="Button1" runat="server" OnClientClick="submit_click" Text="Result"<br>
+OnClick="Button1_Click1" /><br>
+< br /><br>
+< br /><br>
+< /div><br>
+< /form><br>
+< /body><br>
+< /html><br>
+< br>
+Default.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Text;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+< br>
+< br>
+namespace Practical_1a<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+<br>
+        }<br>
+<br>
+        protected void Button1_Click1(object sender, EventArgs e)<br>
+        {<br>
+            int numOfRows = Convert.ToInt32(TextBox1.Text);<br>
+            int number = 1;<br>
+            StringBuilder sb = new StringBuilder();<br>
+            for (int i = 1; i <= numOfRows; i++)<br>
+            {<br>
+                for (int j = 1; j <= i; j++)<br>
+                {<br>
+                    sb.Append(number + " ");<br>
+                    number++;<br>
+                }<br>
+                sb.Append("<br />");<br>
+            }<br>
+            Label1.Text = sb.ToString();<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+PRACTICAL1(C)<br>
+<br>
+Aim:<br>
+Create a application to demonstrate following operations<br>
+i). Generate Fibonacci series.<br>
+ii). Test for prime numbers.<br>
+Default.aspx<br>
+<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs"<br>
+Inherits="practical1c.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+< title></title><br>
+< /head><br>
+< body><br>
+< form id="form1" runat="server"><br>
+< div><br>
+< asp:Label ID="Label1" runat="server" Text="Enter the Number">< /asp:Label><br>
+& nbsp;& nbsp;<br>
+< asp:TextBox ID="TextBox1" runat="server">< /asp:TextBox><br>
+< br /><br>
+< br /><br>
+< asp:Button ID="Button1" runat="server" OnClick="Button1_Click" OnClientClick="Submit_click"<br>
+Text="Fibonacci Series" /><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label2" runat="server" Text="Label">< /asp:Label><br>
+< br /><br>
+< br /><br>
+< asp:Button ID="Button2" runat="server" OnClick="Button2_Click" OnClientClick="Submit_click"Text="Prime Number" /><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label3" runat="server" Text="Label">< /asp:Label><br>
+< /div><br>
+< /form><br>
+< /body><br>
+< /html><br>
+< br>
+< br>
+Default.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Reflection.Emit;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+using static System.Net.Mime.MediaTypeNames;<br>
+<br>
+namespace practical1c<br>
+{<br>
+public partial class WebForm1 : System.Web.UI.Page<br>
+{<br>
+protected void Page_Load(object sender, EventArgs e)<br>
+{<br>
+}<br>
+<br>
+protected void Button1_Click(object sender, EventArgs e)<br>
+{<br>
+int a, b, c, i, n;<br>
+a = 0;<br>
+b = 1;<br>
+Label2.Text = a.ToString() + b.ToString();<br>
+n = Convert.ToInt32(TextBox1.Text);<br>
+for (i = 1; i <= n; ++i)<br>
+{<br>
+c = a + b;<br>
+Label2.Text=Label2.Text + c.ToString();<br><br>
+a = b;<br>
+b = c;<br>
+}<br>
+}<br>
+protected void Button2_Click(object sender, EventArgs e)<br>
+{<br>
+int n, i, s = 0;<br>
+n = Convert.ToInt32(TextBox1.Text);<br>
+if (n == 0 || n == 1)<br>
+s = 1;<br>
+for (i = 2; i <= n / 2; ++i)<br>
+{<br>
+if (n % i == 0)<br>
+{<br>
+s = 1;<br>
+break;<br>
+}<br>
+}<br>
+if (s == 0)<br>
+Label3.Text = "The given number is prime";<br>
+else<br>
+Label3.Text = "The given number is not prime";<br>
+}<br>
+}<br>
+}<br>
+Output:<br>
+<br><br>
+

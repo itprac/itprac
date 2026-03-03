@@ -1,0 +1,88 @@
+A) Basic shell scripring<br>
+1] wrire a program /script of acleptnumber from wer & display its table.<br>
+2] WAP to accept month number fromwer & display the wmespunding monthname<br>
+3) Accept a file name from wer checkwherner it is a file or a divectory. IFthe file eocists, cheek whether it hasunte permission iErt has wite permissiongadd data into the file If the fle doesnor ezeist, creare a file.<br>
+B] Shel soripis to atomate or monitor task /processes<br>
+<br>
+A)1)<br>
+mkdir pract2<br>
+cd pract2<br>
+touch 2a.sh<br>
+sudo vi 2a.sh<br>
+press esc , i<br>
+echo "enter the  number to find its table:"<br>
+read num <br>
+for ((i=1 ; 1<=10: i++))<br>
+do <br>
+        echo "$num * $i = $ ((num * i))"<br>
+done<br>
+press esc :wq<br>
+sudo bash 2a.sh<br>
+<br>
+<br>
+<br>
+a2)months<br>
+sudo touch month.sh<br>
+sudo vi month.sh<br>
+press esc , i<br>
+echo "Enter the Month Number : " <br>
+read mnum<br>
+case $mnum in<br>
+        1) echo "January";;<br>
+        2) echo "Feb";;<br>
+        3) echo "Mar";;<br>
+        4) echo "April";;<br>
+        5) echo "May";;<br>
+        6) ecno "June ";;<br>
+        7) ecno "Jly";;<br>
+        8) echo "August";<br>
+        9) echo "September";;<br>
+        10) echo " Octobet";;<br>
+        11) echo " November";;<br>
+        12) еchо "Derember";;<br>
+        *) echo "Enter valid Number:";;<br>
+esac<br>
+press esc :wq<br>
+sudo bash month.<br>
+<br>
+<br>
+<br>
+a3)file name for task<br>
+sudo touch file.sh<br>
+sudo vi file.sh<br>
+press esc , i<br>
+echo -n "Enter file name: "<br>
+read fname<br>
+<br>
+if [ -d "$fname" ]; then<br>
+    echo "$fname is a directory, not a file."<br>
+    exit 1<br>
+fi<br>
+<br>
+if [ -e "$fname" ]; then<br>
+    # Check write permission<br>
+    if [ -w "$fname" ]; then<br>
+        echo "File exists and has write permission."<br>
+        echo -n "Enter data to append: "<br>
+        read data<br>
+        echo "$data" >> "$fname"<br>
+        echo "Data appended successfully!"<br>
+    else<br>
+        echo "File exists but no write permission."<br>
+    fi<br>
+else<br>
+    echo "File does not exist. Creating file..."<br>
+    touch "$fname"<br>
+    echo "File $fname created."<br>
+fi<br>
+press esc :wq<br>
+sudo bash file.sh<br>
+<br>
+<br>
+B]<br>
+Steps:-)create xyz directory<br>
+2) create 3 files inside it<br>
+3) creare Imn direerory separavery<br>
+a) rite soript & execare it in any I file outw of 3<br>
+<br>
+vi f2.sh<br>

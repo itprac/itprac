@@ -1,0 +1,49 @@
+A Managing Proresses<br>
+<br>
+<br>
+ps<br>
+ps -aux<br>
+top<br>
+top<br>
+vi f4<br>
+press esc i<br>
+for (( i=1 ; i < =10 ; i++))<br>
+do<br>
+echo $i <br>
+sleep 5<br>
+done<br>
+<br>
+bash f4.sh<br>
+to shop press ctrl+z<br>
+<br>
+B Managing storage devices and links<br>
+lsblk<br>
+sudo fdisk -l<br>
+<br>
+<br>
+C]working with Repository<br>
+<br>
+Vm → Removable devices (D/DVD2 (SATA) →<br>
+settings Browse Rhel Iso image file →<br>
+ok  → make sure device status Connected<br>
+conneet at power on should be enabled.<br>
+<br>
+mount<br>
+(from shown ourput lopy this path :<br>
+/run media/PcI /RHE - 9-6-0-Barcos+x86-64<br>
+cd path<br>
+ls<br>
+sudo vi /etc/yum.repos.d/local.repo<br>
+write this code after opening this file:<br>
+[dvd1]<br>
+name = Appstream<br>
+baseurl = File: ///run/media/pc1/RHEL-9-6-0-BaseOS-x86-64/Appstream<br>
+gpgcheck =0<br>
+[dvd2]<br>
+nome = BaseOS<br>
+bareur) = file: ///run /media/pcl/RHEL-9-6-0- Baveos-x86-64/ BaseOS<br>
+gpgcheck =0<br>
+esc<br>
+:wq<br>
+sudo yum repolist<br>
+sudo yum install -y httpd<br>

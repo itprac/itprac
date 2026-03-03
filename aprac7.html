@@ -1,0 +1,268 @@
+Create a web application to demonstrate the use of different types of Cookies.<br>
+<br>
+<br>
+<br>
+Default.aspx<br>
+<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="testdb.WebForm1" %><br>
+<br>
+< !DOCTYPE html><br>
+<br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+        < div><br>
+            < div><br>
+                < asp:Label ID="Label2" runat="server" Text="Label">< /asp:Label><br>
+                < br /><br>
+                < br /><br>
+                < asp:Label ID="Label1" runat="server" Font-Bold="True" Text="Select the company">< /asp:Label><br>
+                < br /><br>
+                < br /><br>
+                < asp:CheckBox ID="Apple" runat="server" Text="Apple" /><br>
+                < br /><br>
+                < asp:CheckBox ID="Dell" runat="server" Text="Dell" /><br>
+                < br /><br>
+                < asp:CheckBox ID="Lenevo" runat="server" Text="Lenevo" /><br>
+                < br /><br>
+                < asp:CheckBox ID="Acer" runat="server" Text="Acer" /><br>
+                < br /><br>
+                < asp:CheckBox ID="Sony" runat="server" Text="Sony" /><br>
+                < br /><br>
+                < asp:CheckBox ID="Wipro" runat="server" Text="Wipro" /><br>
+                < br /><br>
+                < br /><br>
+                < asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" /><br>
+                < br /><br>
+                < br /><br>
+                < br /><br>
+                < asp:Label ID="Label3" runat="server">< /asp:Label><br>
+            < /div><br>
+        < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+<br>
+Default.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+<br>
+namespace testdb<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+<br>
+        <br>
+  // Creating HttpCookie instance by name "creator" <br>
+            HttpCookie c1 = new HttpCookie("creator");<br>
+<br>
+            // Assigning value to the created cookie <br>
+            c1.Value = "Ms. Pranjali Chaudhari";<br>
+<br>
+            // Adding Cookie to the response instance <br>
+<br>
+            Response.Cookies.Add(c1);<br>
+<br>
+            String author = Response.Cookies["creator"].Value;<br>
+<br>
+            Label2.Text = author;<br>
+<br>
+            //Second Cookie <br>
+<br>
+            Response.Cookies["comp"].Expires = DateTime.Now.AddDays(-1);<br>
+<br>
+        }<br>
+<br>
+<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            Label3.Text = "";<br>
+<br>
+            // Adding Cookies-----// <br>
+<br>
+            if (Apple.Checked)<br>
+<br>
+                Response.Cookies["comp"]["apple"] = "apple";<br>
+            if (Dell.Checked)<br>
+<br>
+                Response.Cookies["comp"]["dell"] = "dell";<br>
+            if (Lenevo.Checked)<br>
+<br>
+                Response.Cookies["comp"]["lenevo"] = "lenevo";<br>
+            if (Acer.Checked)<br>
+<br>
+                Response.Cookies["comp"]["acer"] = "acer";<br>
+            if (Sony.Checked)<br>
+                Response.Cookies["comp"]["sony"] = "sony";<br>
+            if (Wipro.Checked)<br>
+<br>
+                Response.Cookies["comp"]["wipro"] = "wipro";<br>
+<br>
+            // Fetching Cookies <br>
+<br>
+            if (Request.Cookies["comp"].Values.ToString() != null)<br>
+            {<br>
+                if (Request.Cookies["comp"]["apple"] != null)<br>
+                    Label3.Text += Request.Cookies["comp"]["apple"] + "";<br>
+                if (Request.Cookies["comp"]["dell"] != null)<br>
+<br>
+                    Label3.Text += Request.Cookies["comp"]["dell"] + "";<br>
+                if (Request.Cookies["comp"]["lenevo"] != null)<br>
+                    Label3.Text += Request.Cookies["comp"]["lenevo"] + "";<br>
+        <br>
+                if (Request.Cookies["comp"]["acer"] != null)<br>
+                    Label3.Text += Request.Cookies["comp"]["acer"] + "";<br>
+                if (Request.Cookies["comp"]["sony"] != null)<br>
+                    Label3.Text += Request.Cookies["comp"]["sony"] + "";<br>
+                if (Request.Cookies["comp"]["wipro"] != null)<br>
+                    Label3.Text += Request.Cookies["comp"]["wipro"] + "";<br>
+            }<br>
+            else Label3.Text = "Please select your choice";<br>
+            Response.Cookies["comp"].Expires = DateTime.Now.AddDays(-1);<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Create a web application to demonstrate Form Security and Windows Security with proper Authentication and Authorization properties<br>
+<br>
+GUI:<br>
+<br>
+Webform1.aspx.cs<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.Security;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+using static System.Net.Mime.MediaTypeNames;<br>
+<br>
+namespace testdb<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+        }<br>
+        protected bool authenticate(String uname, String pass)<br>
+        {<br>
+            if (uname == "Yash")<br>
+            {<br>
+                if (pass == "yash123")                                                     <br>                                               
+<br>
+                {<br>
+                    return true;<br>
+                }<br>
+            }<br>
+            if (uname == "Ved")<br>
+            {<br>
+                if (pass == "ved123")<br>
+                {<br>
+                    return true;<br>
+                }<br>
+            }<br>
+            if (uname == "Sam")<br>
+            {<br>
+                if (pass == "sam123")<br>
+                {<br>
+                    return true;<br>
+                }<br>
+            }<br>
+            return false;<br>
+        }<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            if (authenticate(TextBox1.Text, TextBox2.Text))<br>
+            {<br>
+                FormsAuthentication.RedirectFromLoginPage(TextBox1.Text, chkrem.Checked);<br>
+                Session["Username"] = TextBox1.Text;<br>
+                Response.Redirect("Default2.aspx");<br>
+            }<br>
+            else<br>
+            {<br>
+                Response.Write("Invalid user name or password");<br>
+            }<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Webform2.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="testdb.WebForm2" %><br>
+<br>
+< !DOCTYPE html><br>
+<br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+        < div><br>
+            < asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Underline="True">< /asp:Label> <br>
+<br>
+            < br /><br>
+            < br /><br>
+<br>
+< asp:Label ID="Label2" runat="server" Font-Bold="True" Text="Welcome to the programing world of ASP.NET">< /asp:Label> <br>
+        < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Webform2.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.Security;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+using static System.Net.Mime.MediaTypeNames;<br>
+<br>
+namespace testdb<br>
+{<br>
+    public partial class WebForm2 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+            if (Session["Username"] != null)<br>
+            {<br>
+                //Response.Write(Session["Username"].ToString()); <br>
+                Label1.Text = Session["Username"].ToString();<br>
+            }<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>

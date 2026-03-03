@@ -1,0 +1,56 @@
+FTP Server:<br>
+Server Side:<br>
+Settings:<br>
+3) NAT<br>
+4) DHCP IP Address<br>
+Commands:<br>
+3) sudo yum install vsftpd<br>
+4) sudo systemctl enable vsftpd<br>
+5) sudo systemctl start vsftpd<br>
+6) sudo systemctl status vsftpd<br>
+7) sudo firewall-cmd –permanent –add-service=ftp<br>
+8) sudo systemctl stop firewalld<br>
+Settings:<br>
+3) Host Only<br>
+4) Manual Address<br>
+a. I/P address: 192.168.10.3<br>
+b. Netmask: 24<br>
+c. Gateway : 192.168.10.1<br>
+Client Side:<br>
+Settings:<br>
+1) Host Only<br>
+2) Manual Address<br>
+a. I/P address: 192.168.10.4<br>
+b. Netmask: 24<br>
+c. Gateway : 192.168.10.1<br>
+Commands:<br>
+3) sudo yum install –y ftp<br>
+4) sudo ftp 192.168.10.3<br>
+5) Enter Username : pc1<br>
+6) Enter Password: pc1pc1<br>
+7) sudo get f1.txt (Where f1.txt is a file available on PC1 at server)<br>
+<br>
+<br>
+<br>
+Web server Practical (Suppose the I/P Address is 192.168.136.132)  :<br>
+<br>
+Setting:<br>
+i) NAT<br>
+ii) DHCP<br>
+<br>
+Commands:<br>
+i) sudo yum install -y httpd<br>
+ii) sudo systemctl start httpd<br>
+iii) sudo systemctl enable httpd<br>
+iv) cd /var/www/html<br>
+v) sudo vi index.html<br>
+      #Enter the following code into the file<br>
+         < html><br>
+             < body><br>
+                        Welcome to Server<br>
+             < /body><br>
+         < /html><br>
+vi) sudo firewall-cmd --permanent --add-service=http<br>
+vii) sudo firewall-cmd --reload<br>
+viii) Open firefox browser in RHEL and type the following address in address bar to check the output:<br>
+        http://192.168.136.132/index.html<br>

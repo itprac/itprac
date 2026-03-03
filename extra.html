@@ -1,0 +1,118 @@
+Basic Commands:<br>
+<br>
+1) To search a string in a file:<br>
+               grep "string" filename<br>
+               <br>
+2) To redirect the output of any command to a file:<br>
+     E.g. to redirect output of 'ls' command to a file 'f1'<br>
+        ls > f1<br>
+      <br>
+3) To archive files of any directory<br>
+     E.g. to archive files of bin directory<br>
+        tar -cvf bin.tar    /bin<br>
+      <br>
+4) To extract files from archive<br>
+     E.g. to extract files of bin.tar<br>
+       tar -xvf bin.tar  <br>
+      <br>
+5) To show all files that start with character 'f'<br>
+     ls f*<br>
+    <br>
+6) To show all files that ends with character 'f'<br>
+     ls *f<br>
+    <br>
+7) To change group ownership of file 'f1' to group 'grp1'<br>
+     sudo chgrp grp1 f1<br>
+     <br>
+     <br>
+     <br>
+     🧩 1. Basic Commands of Linux<br>
+     <br>
+Here are some of the most commonly used Linux basic commands:<br>
+<br>
+Command	Description<br>
+pwd	Shows the current working directory<br>
+ls	Lists files and folders in the directory<br>
+cd	Changes the directory<br>
+mkdir	Creates a new directory<br>
+rmdir	Removes an empty directory<br>
+cp source destination	Copies files or directories<br>
+mv source destination	Moves or renames files/directories<br>
+rm filename	Deletes a file<br>
+cat filename	Displays file content<br>
+touch filename	Creates an empty file<br>
+chmod	Changes file permissions<br>
+chown	Changes file owner<br>
+clear	Clears the terminal screen<br>
+man command	Shows manual/help for a command<br>
+📦 2. How to Archive a File<br>
+<br>
+You can archive (compress) files using commands like tar or gzip.<br>
+<br>
+👉 Using tar (most common)<br>
+<br>
+To create an archive:<br>
+<br>
+tar -cvf archive_name.tar file1 file2 file3<br>
+<br>
+<br>
+c → create archive<br>
+<br>
+v → verbose (shows progress)<br>
+<br>
+f → filename for the archive<br>
+<br>
+Example:<br>
+<br>
+tar -cvf myarchive.tar myfile.txt myfolder/<br>
+<br>
+👉 To extract an archive<br>
+tar -xvf archive_name.tar<br>
+<br>
+👉 To create a compressed archive<br>
+tar -czvf archive_name.tar.gz files/<br>
+<br>
+<br>
+(z adds gzip compression)<br>
+<br>
+💻 3. Basic Syntax for Shell Scripting in Linux<br>
+<br>
+A shell script is a file containing commands that are executed by the shell (like bash).<br>
+<br>
+🧠 Basic Syntax:<br>
+<br>
+Start with the Shebang line:<br>
+<br>
+#!/bin/bash<br>
+<br>
+<br>
+This tells the system that the file should be run in the Bash shell.<br>
+<br>
+Write commands line by line:<br>
+Example:<br>
+<br>
+#!/bin/bash<br>
+echo "Hello, World!"<br>
+pwd<br>
+ls<br>
+<br>
+<br>
+Make the script executable:<br>
+<br>
+chmod +x scriptname.sh<br>
+<br>
+<br>
+Run the script:<br>
+<br>
+./scriptname.sh<br>
+<br>
+Example: Simple Script with Variables and Conditions<br>
+#!/bin/bash<br>
+name="Aimbot"<br>
+echo "Hello $name"<br>
+<br>
+if [ $name == "Aimbot" ]; then<br>
+    echo "Welcome to Linux practice!"<br>
+else<br>
+    echo "Unknown user"<br>
+fi<br><br><br>

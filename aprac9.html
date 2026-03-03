@@ -1,0 +1,94 @@
+Create a web application to demonstrate use of GridView buttons column and GridView events along with paging and sorting.<br>
+<br>
+Web.config<br>
+< connectionStrings><br>
+	< add name="C1" connectionString=" " /><br>
+< /connectionStrings><br>
+Step 1 :<br>
+Create a database with Employee Table:<br>
+<br>
+<br>
+
+Step 2 :<br>
+Add a Grid View on WebForm1 and set the data source to the Database1<br>
+<br>
+<br>
+
+Step 3:<br>
+Click on the right arrow near GridView and select Edit Columns:<br>
+<br>
+<br>
+Step 4 :<br>
+Add Button Field from Available Fields and set the button field Properties:<br>
+<br>
+<br>
+Step 5:<br>
+Add Label and remove its Text:<br>
+<br>
+<br>
+
+Step 6 :<br>
+Open GridView Properties And set the Row Command and press enter:<br>
+<br>
+<br>
+
+Step 7 :<br>
+Write a following code in WebForm1.aspx.cs :<br>
+<br>
+protected void GridView_1(object sender, GridViewCommandEventArgs e)<br>
+{<br>
+if (e.CommandName == "Show")<br>
+{<br>
+int index = int.Parse(e.CommandArgument.ToString());<br>
+GridViewRow row = GridView1.Rows[index];<br>
+String name = row.Cells[1].Text;<br>
+Label1.Text = "Selected Employee name is " + name; }<br>
+}<br>
+<br>
+
+<br>
+
+Practical 9(B)<br>
+<br>
+Create a web application to demonstrate data binding using DetailsView and FormView Control.<br>
+Web.config<br>
+< connectionStrings><br>
+	< add name="C1" connectionString=" " /><br>
+< /connectionStrings><br>
+Step 1 :<br>
+Create a database with Employee Table:<br>
+<br>
+<br>
+<br>
+Step 2 :<br>
+Add a Form View on WebForm1 and set the data source to the Database1<br>
+<br>
+<br>
+<br>
+Step 3:<br>
+Specify the table while adding data source and click on advance:<br>
+<br>
+<br>
+<br>
+<br>
+Step 4 :<br>
+Tick Mark both the options and click on ok:<br>
+<br>
+<br>
+<br>
+<br>
+Step 5:<br>
+Click on Enable paging:<br>
+<br>
+<br>
+<br>
+Step 6 :<br>
+Now Select Details View From the tool box<br>
+Set the data source and enable paging, inserting, editing and deleting.<br>
+Click on edit templates and try setting the different templates.<br>
+<br>
+<br>
+<br>
+<br>
+Step 7:<br>
+Click on Edit Fields Try Changing the field Names:<br><br>

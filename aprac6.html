@@ -1,0 +1,111 @@
+Practical 6(A) <br>
+Aim: Create a web application for inserting and deleting records from a database.<br>
+<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="testingdb.WebForm2" %><br>
+<br>
+< !DOCTYPE html><br>
+<br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+        < div><br>
+<br>
+            < asp:TextBox ID="TextBox1" runat="server">< /asp:TextBox><br>
+&nbsp;&nbsp;<br>
+            < asp:TextBox ID="TextBox2" runat="server">< /asp:TextBox><br>
+            < br /><br>
+            < br /><br>
+            < asp:Button ID="Button1" runat="server" Text="View" /><br>
+            < asp:Button ID="Button2" runat="server" Text="Insert" /><br>
+            < asp:Button ID="Button3" runat="server" Text="Update" /><br>
+            < asp:Button ID="Button4" runat="server" Text="Delete" /><br>
+            < br /><br>
+            < br /><br>
+            < asp:GridView ID="GridView1" runat="server"><br>
+            < /asp:GridView><br>
+            < br /><br>
+            < asp:SqlDataSource ID="SqlDataSource1" runat="server">< /asp:SqlDataSource><br>
+            < br /><br>
+<br>
+        < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+<br>
+<br>
+<br>
+Click on Update<br>
+<br>
+Click on Update Database then server explorer→ click on refresh<br>
+<br>
+<br>
+RC on table name i.e demo and Show table data<br>
+<br>
+<br>
+Click on New Connection<br>
+<br>
+<br>
+Click on next till finish<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Data.SqlClient;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web;<br>
+using System.Web.UI.WebControls;<br>
+<br>
+namespace WebApplication6<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        SqlCommand co = new SqlCommand();<br>
+        SqlDataReader ds;<br>
+        SqlDataSource s = new SqlDataSource();<br>
+<br>
+<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+            s.ConnectionString = "Data Source=COMP1-26\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True;";<br>
+        <br>
+<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            s.SelectCommand = "Select * from Demo";<br>
+            GridView1.DataBind();<br>
+        }<br>
+        protected void Button2_Click(object sender, EventArgs e)<br>
+        {<br>
+            SqlParameter p1 = new SqlParameter(), p2 = new SqlParameter();<br>
+            s.InsertParameters.Add("p1", System.Data.DbType.Int32, TextBox1.Text);<br>
+            s.InsertParameters.Add("p2", System.Data.DbType.String, TextBox2.Text);<br>
+            s.InsertCommand = "insert into Demo values(@p1,@p2);";<br>
+            s.Insert();<br>
+<br>
+        }<br>
+<br>
+        protected void Button3_Click(object sender, EventArgs e)<br>
+        {<br>
+            SqlParameter p1 = new SqlParameter(), p2 = new SqlParameter();<br>
+            s.UpdateParameters.Add("p2", System.Data.DbType.String, TextBox2.Text);<br>
+            s.UpdateParameters.Add("p1", System.Data.DbType.Int32, TextBox1.Text);<br>
+            s.UpdateCommand = "update Demo SET name=@p2 where Id=@p1;";<br>
+            s.Update();<br>
+<br>
+        }<br>
+<br>
+        protected void Button4_Click(object sender, EventArgs e)<br>
+        {<br>
+            SqlParameter p1 = new SqlParameter(), p2 = new SqlParameter();<br>
+            s.DeleteParameters.Add("p1", System.Data.DbType.Int32, TextBox1.Text);<br>
+            s.DeleteCommand = "delete Demo where Id=@p1;";<br>
+            s.Delete();<br>
+<br>
+<br>
+        }<br>
+    }<br>
+}<br>
+    <br>

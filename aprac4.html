@@ -1,0 +1,181 @@
+Aim: Create a Registration form to demonstrate use of various validation controls.<br>
+<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="validation.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+   < title>< /title><br>
+< /head><br>
+< body id="txtemail"><br>
+< form id="form1" runat="server"><br>
+< div><br>
+< asp:Label ID="Label1" runat="server" Text="Emp ID:">< /asp:Label><br>
+& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;<br>
+< asp:TextBox ID="txtid" runat="server" ViewStateMode="Enabled">< /asp:TextBox><br>
+< asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtid"ErrorMessage="id must be in 1 to 10" ForeColor="#FF3300" MaximumValue="100"MinimumValue="1" Type="Integer">< /asp:RangeValidator><br>
+    < br /><br>
+<br /><br>
+< asp:Label ID="Label2" runat="server" Text="Emp Name:">< /asp:Label><br>
+& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;<br>
+< asp:TextBox ID="txtname" runat="server" Height="16px" style="margin-left: 2px" Width="121px">< /asp:TextBox><br>
+< asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"ControlToValidate="txtname" ErrorMessage="name can't be empty"ForeColor="#FF3300">< /asp:RequiredFieldValidator><br>
+    < br /><br>
+< br />
+< asp:Label ID="Label3" runat="server" Text=" ">< /asp:Label><br>
+< asp:Label ID="Label4" runat="server" Text="Emp Address:">< /asp:Label><br>
+& nbsp;& nbsp;& nbsp;& nbsp;<br>
+< asp:TextBox ID="txtadr" runat="server" Height="23px" TextMode="MultiLine"Width="118px">< /asp:TextBox><br>
+< br /><br>
+& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;<br>
+< br /><br>
+< asp:Label ID="Label6" runat="server" Text="Email:">< /asp:Label><br>
+& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;<br>
+< asp:TextBox ID="txte" runat="server" Width="120px">< /asp:TextBox><br>
+& nbsp;<br>
+< asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"ControlToValidate="txte" ErrorMessage="email incorrect" ForeColor="Red"<br>ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">< /asp:RegularExpressionValidator><br>
+    < br /><br>
+< br /><br>
+< asp:Label ID="Label7" runat="server" Text="Password:">< /asp:Label><br>
+& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;<br>
+< asp:TextBox ID="txtpw" runat="server" TextMode="Password">< /asp:TextBox><br>
+    < br /><br>
+< br /><br>
+< asp:Label ID="Label8" runat="server" Text="Re-enter:">< /asp:Label><br>
+& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+< asp:TextBox ID="txttype" runat="server" TextMode="Password">< /asp:TextBox><br>
+&nbsp;< asp:CompareValidator ID="CompareValidator1" runat="server"<br>
+ControlToCompare="txtpw" ControlToValidate="txttype" ErrorMessage="password mismatched" ForeColor="#CC6600">< /asp:CompareValida<br>tor>
+&nbsp;&nbsp;<br>
+    < br /><br>
+< br /><br>
+< asp:Button ID="btn1" runat="server" OnClick="btn1_Click" Text="Submit" /><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+< asp:Button ID="btn2" runat="server" OnClick="btn2_Click" Text="Reset" /><br>
+< br /><br>
+< br /><br>
+< br /><br>
+< asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="List"ForeColor="#FF3300" HeaderText="Please correct following errors" ShowMessageBox="True"/><br>
+< br /><br>
+< asp:Label ID="Label9" runat="server" Text="ID">< /asp:Label><br>
+< br /><br>
+< asp:Label ID="Label10" runat="server" Text="NAME">< /asp:Label><br>
+< br /><br>
+< asp:Label ID="Label11" runat="server" Text="ADDRESS">< /asp:Label><br>
+< br /><br>
+< asp:Label ID="Label12" runat="server" Text="EMAIL">< /asp:Label><br>
+< br /><br>
+< br /><br>
+< br /><br>
+< br /><br>
+< br /><br>
+< /div><br>
+< /form><br>
+< /body><br>
+< /html><br>
+< br>
+Default.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+namespace validation<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+<br>
+        }<br>
+        protected void btn1_Click(object sender, EventArgs e)<br>
+        {<br>
+            Label9.Text = "ID" + " : " + txtid.Text;<br>
+            Label10.Text = "Name" + " : " + txtname.Text;<br>
+            Label11.Text = "Add" + " : " + txtadr.Text;<br>
+            Label12.Text = "Email" + " : " + txte.Text;<br>
+        }<br>
+<br>
+        protected void btn2_Click(object sender, EventArgs e)<br>
+        {<br>
+            txtid.Text = "";<br>
+            txtname.Text = "";<br>
+            txtadr.Text = "";<br>
+            txte.Text = "";<br>
+            txtid.Focus();<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+Web.config<br>
+ADD BELOW < CONFIGURATION><br>
+<br>
+    <br>
+  < appSettings><br>
+    < add key="ValidationSettings:UnobtrusiveValidationMode" value="None" /><br>
+  < /appSettings><br>
+<br>
+<br>
+<br>
+          Practical 4(B)<br>
+Aim: Create a web form to demonstrate use of Adrotator Control. <br>
+<br>
+<br>
+DEFAULT.XML<br>
+< ?xml version="1.0" encoding="utf-8" ?><br>
+< Advertisements><br>
+  < Ad><br>
+    < ImageUrl>ad1.jpg< /ImageUrl><br>
+< NavigateUrl>https://www.nvidia.com/en-in/geforce/graphics-cards/40-series/rtx-4090/< /NavigateUrl><br>
+    < AlternateText>graphic card< /AlternateText><br>
+    < Keyword>graphic card< /Keyword><br>
+    < Impressions>20< /Impressions><br>
+  < /Ad><br>
+  < Ad><br>
+    < ImageUrl>ad2.jpeg< /ImageUrl><br>
+< NavigateUrl>https://www.msi.com/Motherboard/PRO-Z790-A-MAX-WIFI< /NavigateUrl><br>
+    < AlternateText>motherboard< /AlternateText><br>
+    < Keyword>motherboard< /Keyword><br>
+    < Impressions>20< /Impressions><br>
+  < /Ad><br>
+  < Ad><br>
+    < ImageUrl>ad3.jpeg< /ImageUrl>  < NavigateUrl>https://www.corsair.com/us/en/p/memory/cmw16gx4m2c3200c16/vengeancea-rgb-pro-16gb-2-x-8gb-ddr4-dram-3200mhz-c16-memory-kit-a-black-cmw16gx4m2c3200c16< /NavigateUrl><br>
+    < AlternateText>ram< /AlternateText><br>
+    < Keyword>ram< /Keyword><br>
+    < Impressions>20< /Impressions><br>
+  < /Ad><br>
+< /Advertisements><br>
+<br>
+<br>
+<br>
+Practical 4(C) <br>
+Aim: Create web form to demonstrate User controls. <br>
+Aspx form: <br>
+<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication4.WebForm1" %><br>
+<%@ Register Src="/footer.ascx" TagName="footer" TagPrefix="STfooter"%><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+< div><br>
+< asp:Label ID="Label1" runat="server" Text="Welcome to ASP.Net">< /asp:Label><br>
+< /div><br>
+< STfooter:footer ID="footer1" runat="server" /><br>
+< /form><br>
+< /body><br>
+< /html> <br>
+<br>
+Footer.ascx<br>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="footer.ascx.cs" Inherits="WebApplication4.footer" %><br>
+< table><br>
+< tr><br>
+< td>   <br>
+< /td> align="center" style="font-family: Cambria; background-color: #00CCFF font-size: 14px; text-decoration:blink; color: #FF0000; font-weight: bold;"> Advanced Web programming < /td><br>
+< /tr><br>
+< /table><br>
+

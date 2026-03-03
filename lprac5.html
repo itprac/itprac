@@ -1,0 +1,74 @@
+Server Side:<br>
+Settings:<br>
+1) NAT<br>
+2) DHCP IP Address<br>
+Commands:<br>
+1) sudo yum install dhcp*<br>
+2) sudo cp /usr/share/doc/dhcp-server/dhcpd.conf.example /etc/dhcp/dhcpd.conf<br>
+Settings:<br>
+1) Host Only<br>
+2) Manual Address<br>
+a. I/P address: 192.168.10.3<br>
+b. Netmask: 24<br>
+c. Gateway : 192.168.10.1<br>
+<br>
+Commands:<br>
+1) sudo vi /etc/dhcp/dhcpd.conf<br>
+2) Open the file and make changes in the file.<br>
+a. Remove the commenet before “authoritative” statement.<br>
+b. Comment everything except the below lines:<br>
+<br>
+default-lease-time 600;<br>
+max-lease-time 7200;<br>
+# If this DHCP server is the official DHCP server for the local<br>
+# network, the authoritative directive should be uncommented.<br>
+authoritative;<br>
+log-facility local7;<br>
+# A slightly different configuration for an internal subnet.<br>
+subnet 192.168.3.0 netmask 255.255.255.0 {<br>
+range 192.168.3.30 192.168.3.80;<br>
+range 192.168.3.100 192.168.3.150;<br>
+option domain-name-servers 192.168.3.52;<br>
+option domain-name "fabfour.com";<br>
+option routers 192.168.3.1;<br>
+option broadcast-address 192.168.3.255;<br>
+default-lease-time 600;<br>
+max-lease-time 7200;<br>
+}<br>
+<br>
+c. Change subnet value to 192.168.10.0<br>
+d. Netmask 255.255.255.0<br>
+e. Range 192.168.10.10 192.168.10.20<br>
+f. Option routers 192.168.10.1<br>
+g. Option broadcast-address 192.168.10.255<br>
+3) Sudo systemctl restart dhcpd<br>
+4) Sudo systemctl enable dhcpd<br>
+5) Sudo systemctl status dhcpd<br>
+Client Side:<br>
+Settings:<br>
+1) Host Only<br>
+2) DHCP Address<br>
+<br>
+<br>
+<br>
+OpenSSH:<br>
+Server Side: (Let’s assume DHCP address of server is 192.168.177.128)<br>
+Settings:<br>
+1) NAT<br>
+2) DHCP IP Address<br>
+Commands:<br>
+1) sudo systemctl start sshd<br>
+2) sudo systemctl enable sshd<br>
+3) sudo systemctl status sshd<br>
+Client Side (RHEL): (Let’s assume DHCP address of client is 192.168.177.129)<br>
+Settings:<br>
+1) NAT<br>
+2) DHCP IP Address<br>
+Commands:<br>
+1) sudo ssh pc1@192.168.177.128<br>
+2) pc1 > touch f1<br>
+Client Side (Windows):<br>
+1) Open putty<br>
+2) Enter the address: 192.168.177.128<br>
+3) When asked for username, enter “pc1”<br>
+4) Enter Password : pc1pc1<br>

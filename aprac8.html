@@ -1,0 +1,276 @@
+Create a web application for inserting and deleting records from a database. (Using Execute-Non Query).<br>
+<br>
+THEORY:<br>
+ExecuteNonQuery is a method used in ADO.NET (and similar database access frameworks) to execute SQL commands that do not return any data, but rather modify the database. This typically includes:<br>
+INSERT statements: Used to add new rows to a table.<br>
+UPDATE statements: Used to modify existing data in a table.<br>
+DELETE statements: Used to remove rows from a table.<br><br>
+CREATE, ALTER, or DROP statements: Used to manage database objects like tables, indexes, or stored procedures.<br>
+NOTE: DATABASE CREATION IS REQUIRED. FOR THIS REFER TO DATABASE CONNECTIVITY DOCUMENT UPLOADED<br>
+<br>
+<br>
+<br>
+WEBFORM1.ASPX<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="p8a.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+        < div><br>
+            < asp:Label ID="fname" runat="server" Text="Enter Customer First Name">< /asp:Label><br>
+< asp:TextBox ID="TextBox1" runat="server">< /asp:TextBox> <br>
+< br /> <br>
+< br /> <br>
+< asp:Label ID="lname" runat="server" Text="Enter Customer Last Name">< /asp:Label> <br>
+< asp:TextBox ID="TextBox2" runat="server">< /asp:TextBox> <br>
+< br /> <br>
+< br /> <br>
+< asp:Label ID="city" runat="server" Text="Enter Customer City">< /asp:Label> <br>
+< asp:TextBox ID="TextBox3" runat="server">< /asp:TextBox> <br>
+< br /> <br>
+< br /> <br>
+< br /> <br>
+< asp:Label ID="country" runat="server" Text="Enter Customer Country:">< /asp:Label> <br>
+< asp:TextBox ID="TextBox4" runat="server">< /asp:TextBox> <br>
+< br /> <br>
+< br /> <br>
+< asp:Label ID="phone" runat="server" Text="Enter Customer Phone">< /asp:Label> <br>
+< asp:TextBox ID="TextBox5" runat="server">< /asp:TextBox> <br>
+< br /> <br>
+< br /> <br>
+< asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Insert Record" /><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+< asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Delete Record" /> <br>
+< br /> <br>
+< br /> <br>
+< br /> <br>
+< asp:Label ID="Label1" runat="server">< /asp:Label><br>
+        < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+<br>
+<br>
+Default.aspx.cs<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+using System.Configuration;<br>
+using System.Data.SqlClient;<br>
+using System.Drawing;<br>
+using System.Security.Policy;<br>
+<br>
+namespace p8a<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+<br>
+        }<br>
+<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            string connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;<br>
+<br>
+            SqlConnection con = new SqlConnection(connStr);<br>
+<br>
+            string InsertQuery = "insert into customer values(@fname, @lname, @city,country, @phone)";<br>
+<br>
+            SqlCommand cmd = new SqlCommand(InsertQuery, con);<br>
+<br>
+            cmd.Parameters.AddWithValue("@fname", TextBox1.Text);<br>
+<br>
+            cmd.Parameters.AddWithValue("@lname", TextBox2.Text);<br>
+            cmd.Parameters.AddWithValue("@city", TextBox3.Text);<br>
+<br>
+            cmd.Parameters.AddWithValue("@country", TextBox4.Text);<br>
+<br>
+            cmd.Parameters.AddWithValue("@phone", TextBox5.Text);<br>
+<br>
+            con.Open();<br>
+<br>
+            Label1.Text = "Record Inserted Successfully.";<br>
+<br>
+            con.Close();<br>
+        }<br>
+<br>
+        protected void Button2_Click(object sender, EventArgs e)<br>
+        {<br>
+            string connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;<br>
+<br>
+            SqlConnection con = new SqlConnection(connStr);<br>
+<br>
+            string InsertQuery = "delete from customer where FirstName=@fname";<br>
+<br>
+            SqlCommand cmd = new SqlCommand(InsertQuery, con);<br>
+<br>
+            cmd.Parameters.AddWithValue("@fname", TextBox1.Text);<br>
+<br>
+            con.Open();<br>
+<br>
+            cmd.ExecuteNonQuery();<br>
+<br>
+            Label1.Text = "Record Deleted Successfully.";<br>
+            con.Close();<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+<br>
+MAKE THE FOLLOWING CHANGES IN WEB.CONFIG<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+IF NOT EXISTS (<br>
+    SELECT * FROM sys.tables WHERE name = 'customer'<br>
+)<br>
+BEGIN<br>
+    CREATE TABLE customer (<br>
+        CustomerID INT PRIMARY KEY,<br>
+        FirstName NVARCHAR(50),<br>
+        LastName NVARCHAR(50),<br>
+        Email NVARCHAR(100),<br>
+        Phone NVARCHAR(20)<br>
+        -- Add more columns as needed<br>
+    );<br>
+END<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Practical 8(B) <br>
+       Create a web application for user defined exception handling.<br>
+<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+<br>
+namespace P8B<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+<br>
+            try<br>
+            {<br>
+                throw new UserDefinedException("New User Defined Exception");<br>
+            }<br>
+<br>
+            catch (Exception ex)<br>
+            {<br>
+                Label1.Text = "Exception caught here" + ex.ToString();<br>
+            }<br>
+            Label2.Text = "Final Statement that is executed";<br>
+        }<br>
+        class UserDefinedException : Exception<br>
+        {<br>
+            public UserDefinedException(string str)<br>
+            {<br>
+                Console.WriteLine("User defined exception");<br>
+            }<br>
+        }<br>
+        class HandledException<br>
+        {<br>
+            public static void Main()<br>
+            {<br>
+            }<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+Practical 9(A) <br>
+Create a web application to demonstrate use of GridView buttons column and GridView events along with paging and sorting.<br>
+<br>
+Web.config<br>
+< connectionStrings><br>
+	< add name ="C1" connectionString=" "/>     < /connectionStrings><br>
+Step 1 :<br>
+Create a database with Employee Table:<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Step 2 :<br>
+Add a Grid View on WebForm1 and set the data source to the Database1<br>
+<br>
+<br>
+<br>
+<br>
+Step  3:<br>
+Click on the right arrow near GridView and select Edit Columns:<br>
+<br>
+<br>
+Step 4 :<br>
+Add Button Field from Available Fields and set the button field Properties:<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Step 5:<br>
+Add Label and remove its Text:<br>
+ 
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+Step 6 :<br>
+Open GridView Properties And set the Row Command and press enter:<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Step 7 :<br>
+Write a following code in WebForm1.aspx.cs :<br>
+<br>
+protected void GridView_1(object sender, GridViewCommandEventArgs e)<br>
+    	{<br>
+        	if (e.CommandName == "Show")<br>
+        	{<br>
+            	int index = int.Parse(e.CommandArgument.ToString());<br>
+            	GridViewRow row = GridView1.Rows[index];<br>
+            	String name = row.Cells[1].Text;<br>
+            	Label1.Text = "Selected Employee name is " + name;         	}<br>
+    	} <br>
+<br>
+<br>
+<br><br>

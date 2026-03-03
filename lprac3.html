@@ -1,0 +1,63 @@
+A) Configure rsyslog<br>
+B) Configuring at, batch, cron utiliny.<br>
+<br>
+A)<br>
+server<br>
+<br>
+ifconfig<br>
+sudo systemctl status rsyslog<br>
+sudo vim  /etc/rsyslog.conf<br>
+remove # from line 32 and 33 ,37and 38<br>
+press esc :wq<br>
+sudo firewall-cmd --add-port=514/tcp --zone=public --permanent<br>
+sudo firewall-cmd --reload<br>
+sudo systemctl start rsyslog<br>
+sudo systemctl enable rsyslog<br>
+sudo systemctl status rsyslog<br>
+<br>
+client<br>
+<br>
+ping 8.8.8.8<br>
+ifconfig<br>
+sudo systemctl status rsyslog<br>
+sudo vi /etc/rsyslog.conf<br>
+press esc i<br>
+*.*@192.168.136.131(Server)<br>
+*.*@@192.168.136.131(Server)<br>
+PRESS :wq<br>
+sudo firewall-cmd --add-port=514/tcp --zone=public --permanent<br>
+sudo firewall-cmd --reload<br>
+sudo systemctl restart rsyslog<br>
+sudo systemctl enable rsyslog<br>
+sudo logger "name"<br>
+<br>
+server<br>
+<br>
+sudo tail -f /var/log/messages<br>
+<br>
+<br>
+<br>
+<br>
+B)1)at<br>
+<br>
+tty<br>
+at 11:54 <br>
+cal > /dev/pts/0<br>
+press ctrl+d<br>
+<br>
+B)2)batch<br>
+<br>
+batch<br>
+cal > /dev/pts/0<br>
+< EOT><br>
+<br>
+<br>
+<br>
+<br>
+B)3)cron<br>
+<br>
+tty<br>
+sudo vi /etc/crontab<br>
+11 12 * * * cal > /dev/pts/0<br>
+press esc i<br>
+11 12 * * * cal > /dev/pts/0<br><br>

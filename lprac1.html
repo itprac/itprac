@@ -1,0 +1,34 @@
+A) Creaing and managing wers<br>
+B) Crearng and managing groups<br>
+c) Using permissions & Advanced permissions-<br>
+<br>
+A) create a user PC1<br>
+sudo useradd -u 6000 -d /home/pc2 -c "name" -s /bin/bash -m PC1<br>
+sudo passwd PC1<br>
+sudo usermod -d /home/PC1home PC1<br>
+sudo usermod -l PC1new PC1<br>
+sudo cat /etc/passwd | tail -n 1<br>
+sudo usermod -c "PRACT1" PC1new<br>
+sudo cat /etc/shadow | tail -n 1<br>
+<br>
+b)managing group<br>
+sudo groupadd grp1<br>
+sudo useramod -G grp1 PC1new<br>
+sudi groupmod -n grp2 grp1<br>
+<br>
+c)using permissions<br>
+touch f1<br>
+sudo chmod ug+x f1 <br>
+sudo chmod 645 f1<br>
+sudo chgrp grp2 f1<br>
+sudo chmod 664 f1<br>
+ls -al f1<br>
+sudo chown PC1new f1<br>
+sudo chmod 765 f1<br>
+ls -al f1<br>
+sudo chattr +i f1<br>
+sudo chattr +a f1<br>
+sudo chattr -i f1<br>
+sudo rm f1<br>
+sudo userdel -rf PC1new<br>
+sudo groupdel grp2<br>

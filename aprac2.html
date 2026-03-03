@@ -1,0 +1,256 @@
+Aim: Create a simple application to demonstrate the concept of boxing and unboxing.<br>
+<br>
+Default.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="practical_2.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+ < title>  < /title><br>
+< /head><br>
+< body> <br>
+< form id="form2" runat="server"> <br>
+< div><br>
+< asp:Label ID="Label1" runat="server" Text="Enter the Value">< /asp:Label><br>
+& nbsp;<br>
+< asp:TextBox ID="TextBox1" runat="server">< /asp:TextBox><br>
+< br /><br>
+< br /><br>
+< br /><br>
+< asp:Button ID="Button1" runat="server" OnClick="Button1_Click" OnClientClick="submit_click"Text="Print Boxed and UnBoxed Value" /><br>
+< br /><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label2" runat="server" Text="Label">< /asp:Label><br>
+< br /><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label3" runat="server" Text="Label">< /asp:Label><br>
+< /div><br>
+< /form><br>
+< /body><br>
+< /html><br>
+ <br>
+Default.aspx.cs <br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Runtime.CompilerServices;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+namespace practical_2<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+     <br>
+        }<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            int valueType = Convert.ToInt32(TextBox1.Text);<br>
+            object boxed = valueType;<br>
+            Label2.Text = "Boxed Value:" + boxed;<br>
+            int unboxed = (int)boxed; <br>
+            Label3.Text = "unboxed value:" + unboxed;<br>
+        }<br>
+    }<br>
+}<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="DEM.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+    < div><br>
+        < h2>Boxing and Unboxing Example< /h2><br>
+        < asp:Button ID="btnBoxing" runat="server" Text="Demonstrate Boxing" OnClick="btnBoxing_Click" /><br>
+        < asp:Button ID="btnUnboxing" runat="server" Text="Demonstrate Unboxing" OnClick="btnUnboxing_Click" /><br>
+        < br /><br /><br>
+        < asp:Label ID="lblMessage" runat="server" Text="" /><br>
+    < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+Default.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+namespace DEM<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+ <br>
+        }<br>
+        protected void btnBoxing_Click(object sender, EventArgs e)<br>
+        {<br>
+            int m = 10;<br>
+            object om = m;<br>
+            m = 20;<br>
+            lblMessage.Text = "After Boxing:<br/>" +<br>
+                              "Value of m (int): " + m + "<br/>" +<br>
+                              "Value of om (object): " + om.ToString();<br>
+        }<br>
+        protected void btnUnboxing_Click(object sender, EventArgs e)<br>
+        {<br>
+            object om = 100;<br>
+            int n = (int)om; <br>
+            lblMessage.Text = "After Unboxing:<br/>" +<br>
+                              "Value of om (object): " + om.ToString() + "<br/>" +<br>
+                              "Value of n (int): " + n.ToString();<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+Practical 2(B)<br>
+Aim: Create a simple application to perform addition and subtraction using delegate.<br>
+<br>
+Default.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="practical_2.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"> <br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+< form id="form1" runat="server"><br>
+< div><br>
+< asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text="Delegate Demo">< /asp:Label><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label2" runat="server" Text="Enter the Number 1:">< /asp:Label><br>
+& nbsp;<br>
+< asp:TextBox ID="TextBox1" runat="server">< /asp:TextBox><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label3" runat="server" Text="Enter the Number 2:">< /asp:Label><br>
+& nbsp;& nbsp;<br>
+< asp:TextBox ID="TextBox2" runat="server">< /asp:TextBox><br>
+< br /><br>
+< br /><br>
+< br /><br>
+< asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Delegate Demo" /><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label4" runat="server" Text="Label">< /asp:Label><br>
+< br /><br>
+< br /><br>
+< asp:Label ID="Label5" runat="server" Text="Label">< /asp:Label><br>
+< /div><br>
+< /form><br>
+< /body><br>
+< /html><br>
+<br>
+<br>
+Default.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Reflection.Emit;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+namespace practical_2<br>
+{<br>
+public delegate int MathOperation(int a, int b);<br>
+    public partial class WebForm1 : System.Web.UI.Page <br>
+{<br>
+        int Add(int a, int b)<br>
+        {<br>
+            return a + b;<br>
+        }<br>
+        int Subtract(int a, int b)<br>
+        {<br>
+            return a - b;<br>
+        }<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            int x = Convert.ToInt32(TextBox1.Text);<br>
+            int y = Convert.ToInt32(TextBox2.Text);<br>
+            MathOperation add = new MathOperation(Add);<br>
+            MathOperation subtract = new MathOperation(Subtract);<br>
+            Label4.Text = add(x, y).ToString();<br>
+            Label5.Text = subtract(x, y).ToString();<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+<br>
+Practical 2(C)<br>
+Aim: <br>
+Create a simple application to demonstrate use of the concept of interfaces.<br>
+<br>
+Default.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="practical_2.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+< form id="form1" runat="server"><br>
+< div><br>
+< asp:Label ID="Label1" runat="server" Text="Area of circle and rectangle using interface">< /asp:Label><br>
+< br />< br /><br>
+& nbsp;< asp:Label ID="Label2" runat="server" Text="Area of a circle:">< /asp:Label><br>
+& nbsp;<br>
+< asp:Label ID="Label3" runat="server" Text="Label">< /asp:Label><br>
+<br /><br /><br>
+< asp:Label ID="Label4" runat="server" Text="Area of a rectangle:">< /asp:Label><br>
+& nbsp;< asp:Label ID="Label5" runat="server" Text="Label">< /asp:Label><br>
+< /div><br>
+< /form><br>
+< /body><br>
+< /html><br>
+<br>
+Default.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Reflection.Emit;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+namespace practical_2<br>
+{    <br>
+interface Area<br>
+    {<br>
+        double show(double s, double t);<br>
+    }<br>
+    class Rect : Area<br>
+    {<br>
+        public double show(double s, double t)<br>
+        {<br>
+            return s * t;<br>
+        }<br>
+    }<br>
+    class Circle : Area<br>
+    {<br>
+        public double show(double s, double t)<br>
+        {<br>
+            return (3.14 * s * s);<br>
+        }<br>
+}<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+            Rect r1 = new Rect();<br>
+            double x = r1.show(3, 4);<br>
+            Circle c1 = new Circle();<br>
+            double y = c1.show(3, 4);<br>
+            Label3.Text = x.ToString();<br>
+            Label5.Text = y.ToString();<br>
+        }<br>
+    }<br>
+}<br>
+<br>

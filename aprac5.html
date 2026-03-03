@@ -1,0 +1,362 @@
+Aim: Create Web Form to demonstrate use of Website Navigation controls.<br>
+Home.aspx<br>
+<br>
+<br>
+Home.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="P5A.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+        < div><br>
+            < br /><br>
+            < br /><br>
+            < asp:Label ID="Label1" runat="server" Text="HOME">< /asp:Label><br>
+            < br /><br>
+            < br /><br>
+            < br />
+            < asp:SiteMapPath ID="SiteMapPath1" runat="server" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" : "><br>
+                < CurrentNodeStyle ForeColor="#333333" /><br>
+                < NodeStyle Font-Bold="True" ForeColor="#990000" /><br>
+                < PathSeparatorStyle Font-Bold="True" ForeColor="#990000" /><br>
+                < RootNodeStyle Font-Bold="True" ForeColor="#FF8000" /><br>
+            < /asp:SiteMapPath><br>
+            < br /><br>
+            < br /><br>
+            < asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1"><br>
+            < /asp:Menu><br>
+            < br /><br>
+            < br /><br>
+            < asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" /><br>
+        < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+<br>
+<br>
+Create Contactus.aspx and Search.aspx and add SiteMapPath to both pages<br>
+<br>
+<br>
+<br>
+Contactus.apx <br>
+<br>
+ < div><br>
+      CONTACT US< br /><br>
+         < br /><br>
+            < asp:SiteMapPath ID="SiteMapPath1" runat="server" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" : "><br>
+                < CurrentNodeStyle ForeColor="#333333" /><br>
+                < NodeStyle Font-Bold="True" ForeColor="#666666" /><br>
+                < PathSeparatorStyle Font-Bold="True" ForeColor="#1C5E55" /><br>
+                < RootNodeStyle Font-Bold="True" ForeColor="#1C5E55" /><br>
+            < /asp:SiteMapPath><br>
+<br>
+Search.aspx<br>
+<br>
+<br>
+ < asp:Label ID="Label1" runat="server" Text="SEARCH">< /asp:Label><br>
+            < br /><br>
+            < br /><br>
+            < asp:SiteMapPath ID="SiteMapPath1" runat="server" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" : "><br>
+                < CurrentNodeStyle ForeColor="#333333" /><br>
+                < NodeStyle Font-Bold="True" ForeColor="#7C6F57" /><br>
+                < PathSeparatorStyle Font-Bold="True" ForeColor="#5D7B9D" /><br>
+                < RootNodeStyle Font-Bold="True" ForeColor="#5D7B9D" /><br>
+            < /asp:SiteMapPath><br>
+<br>
+CREATE ONE SITEMAP FILE WITH NAME Web.sitemap<br>
+< ?xml version="1.0" encoding="utf-8" ?><br>
+< siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" ><br>
+  < siteMapNode url="Home.aspx" title="Home" description="Home page of our web site"><br>
+    < siteMapNode url="Contactus.aspx" title="Contactus" description="Contactus" /><br>
+    < siteMapNode url="Search.aspx" title="Search" description="Search" /><br>
+  < /siteMapNode><br>
+< /siteMap><br>
+<br>
+IN HOME PAGE<br>
+SiteMapPath→ AutoFormat<br>
+<br>
+Home (MENU) -> Choose Data Source and Select DataSource1<br>
+<br>
+SiteMapDataSource->Refresh Schema<br>
+<br>
+<br>
+<br>
+Practical 5(B) <br>
+Aim: Create a web application to demonstrate use of Master Page and content page.<br>
+<br>
+Master page selection <br>
+SELECT WEB FORMS MASTER PAGE<br>
+<br>
+<br>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="p5b.Site1" %><br>
+< !DOCTYPE html><br>
+< html><br>
+< head runat="server"><br>
+    < title>< /title><br>
+    < asp:ContentPlaceHolder ID="head" runat="server"><br>
+    < /asp:ContentPlaceHolder><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+        < div><br>
+            < h1>WElCOME< /h1><br>
+            < h2>to< /h2><br>
+            < asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"><br>
+            < /asp:ContentPlaceHolder><br>
+            < h4> AWP< /h4><br>
+        < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+<br>
+Content Page<br>
+SELECT WEB FORMS WITH MASTER PAGE<br>
+<br>
+<br>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="p5b.WebForm1" %><br>
+< asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"><br>
+< /asp:Content><br>
+< asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"><br>
+    This is content page<br>
+< /asp:Content><br>
+<br>
+ADD this part of code in web.config  if error arises<br>
+< system.webServer><br>
+ < directoryBrowse enabled="true"/><br>
+  < /system.webServer><br>
+<br>
+<br>
+<br>
+Practical 5(C) <br>
+Aim: Create a web application to demonstrate various states of ASP.NET Pages.<br>
+<br>
+I) VIEWSTATE and COOKIES <br>
+<br>
+<br>
+WEBFORM1.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+<br>
+namespace p5c<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+            if (IsPostBack)<br>
+            {<br>
+                int ViewStateVal = Convert.ToInt32(ViewState["count"]) + 1;<br>
+                Label2.Text = "View State =" + ViewStateVal.ToString();<br>
+            }<br>
+            else<br>
+            {<br>
+                ViewState["count"] = 1;<br>
+            }<br>
+        }<br>
+<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            Label1.Text = ViewState["count"].ToString();<br>
+        }<br>
+<br>
+        protected void Button2_Click(object sender, EventArgs e)<br>
+        {<br>
+            HttpCookie h = new HttpCookie("Name");<br>
+            h.Value = TextBox1.Text;<br>
+            Response.Cookies.Add(h);<br>
+            Response.Redirect("Webform2.aspx");<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+WEBFORM2.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+namespace p5c<br>
+{<br>
+    public partial class WebForm2 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+            if(Request.Cookies["name"] != null)<br>
+            {<br>
+                Response.Write("Welcome" + Request.Cookies["name"].Value);<br>
+            }<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+<br>
+II) QUERY STRING<br>
+<br>
+<br>
+WebForm1.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="query_string.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+        < div><br>
+            < asp:Label ID="Label1" runat="server" Text="QueryString Example"> < /asp:Label> <br>
+< br /><br>
+< br /> <br>
+< asp:Label ID="txtUserId" runat="server" Text="UserID:">< /asp:Label> <br>
+&nbsp;< asp:TextBox ID="TextBox1" runat="server">< /asp:TextBox> <br>
+< br /> <br>
+< br /> <br>
+< asp:Label ID="txtUserName" runat="server" Text="UserName:">< /asp:Label> <br>
+< asp:TextBox ID="TextBox2" runat="server">< /asp:TextBox> <br>
+< br /> <br>
+< asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Send Values" /><br>
+        < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+<br>
+<br>
+WebForm1.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+<br>
+namespace query_string<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+<br>
+        }<br>
+        protected void Button1_Click(object sender, EventArgs e)<br>
+        {<br>
+            Response.Redirect("WebForm2.aspx?txtUserId=" + Server.UrlEncode(TextBox1.Text) +"&txtUserName=" + Server.UrlEncode(TextBox2.Text));<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+<br>
+WebForm2.aspx<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="query_string.WebForm2" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+< body><br>
+    < form id="form1" runat="server"><br>
+        < div><br>
+            < asp:Label ID="Label1" runat="server" Font-Bold="True" Text="QueryString parameter Values in <br>
+Default4.aspx Page">< /asp:Label> <br>
+< br /> <br>
+< br /> <br>
+< asp:Label ID="Label2" runat="server" Font-Bold="True" Text="UserID:">< /asp:Label> <br>
+< asp:Label ID="lblUserId" runat="server" Font-Bold="True">< /asp:Label> <br>
+< br /> <br>
+< br /> <br>
+< asp:Label ID="Label3" runat="server" Font-Bold="True" Text="User Name:">< /asp:Label> <br>
+< asp:Label ID="lblUserName" runat="server" Font-Bold="True">< /asp:Label><br>
+        < /div><br>
+    < /form><br>+
+< /body><br>
+< /html><br>
+<br>
+WebForm2.aspx.cs<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+<br>
+namespace query_string<br>
+{<br>
+    public partial class WebForm2 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+            {<br>
+                if (!IsPostBack)<br>
+                {<br>
+                    lblUserId.Text = Request.QueryString["txtUserId"];<br>
+                    lblUserName.Text = Request.QueryString["txtUserName"];<br>
+                }<br>
+            }<br>
+        }<br>
+    }<br>
+}<br>
+<br>
+<br>
+<br>
+III)  Cookies:<br>
+<br>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="sessionstate.WebForm1" %><br>
+< !DOCTYPE html><br>
+< html xmlns="http://www.w3.org/1999/xhtml"><br>
+< head runat="server"><br>
+    < title>< /title><br>
+< /head><br>
+    < body id="BodyTag" runat="server"> <br>
+    < form id="form1" runat="server"><br>
+        < div><br>
+           < asp:DropDownList ID="ColorSelector" runat="server" AutoPostBack="True" <br>
+OnSelectedIndexChanged="ColorSelector_IndexChanged"> <br>
+< asp:ListItem Value="white" Selected="True">Select colour____< /asp:ListItem> <br>
+< asp:ListItem Value="red">red< /asp:ListItem> <br>
+< asp:ListItem Value="green">green< /asp:ListItem> <br>
+< asp:ListItem Value="blue">blue< /asp:ListItem> <br>
+< /asp:DropDownList><br>
+        < /div><br>
+    < /form><br>
+< /body><br>
+< /html><br>
+<br>
+<br>
+Default.aspx.cs<br>
+<br>
+using System;<br>
+using System.Collections.Generic;<br>
+using System.Drawing;<br>
+using System.Linq;<br>
+using System.Web;<br>
+using System.Web.UI;<br>
+using System.Web.UI.WebControls;<br>
+namespace sessionstate<br>
+{<br>
+    public partial class WebForm1 : System.Web.UI.Page<br>
+    {<br>
+        protected void Page_Load(object sender, EventArgs e)<br>
+        {<br>
+            if (Request.Cookies["BackgroundColor"] != null)<br>
+                ColorSelector.SelectedValue = Request.Cookies["BackgroundColor"].Value;<br>
+            BodyTag.Style["background-color"] = ColorSelector.SelectedValue;<br>
+        }<br>
+        protected void ColorSelector_IndexChanged(object sender, EventArgs e)<br>
+        {<br>
+            BodyTag.Style["background-color"] = ColorSelector.SelectedValue;<br>
+            HttpCookie cookie = new HttpCookie("BackgroundColor");<br>
+            cookie.Value = ColorSelector.SelectedValue;<br>
+            cookie.Expires = DateTime.Now.AddMilliseconds(20);<br>
+            Response.SetCookie(cookie);<br>
+        }<br>
+    }<br>
+}<br>
+<br>

@@ -1,0 +1,55 @@
+
+NFS Practical:<br>
+<br>
+Server Side:<br>
+<br>
+Setting:<br>
+i) NAT<br>
+ii) DHCP<br>
+<br>
+Commands:<br>
+i) sudo yum install -y nfs*<br>
+ii) sudo mkdir /xyz<br>
+iii) sudo chmod 777 /xyz<br>
+iv) sudo vi /etc/exports<br>
+     #Enter following details into the file<br>
+     /xyz     *(rw,sync)<br>
+v) sudo systemctl start nfs-sever<br>
+vi) <br>
+<br>
+sudo systemctl enable nfs-sever<br>
+vii) <br>
+<br>
+sudo systemctl status nfs-sever<br>
+viii) sudo <br>
+<br>
+firewall-cmd --permanent --add-service=nfs<br>
+ix)  <br>
+<br>
+sudo  firewall-cmd --permanent --add-service=rpc-bind<br>
+x) <br>
+<br>
+sudo  firewall-cmd --permanent --add-service=mountd<br>
+xi) <br>
+<br>
+ sudo firewall-cmd --reload<br>
+xii) sudo expotfs -v<br>
+xiii) sudo exportfs -r<br>
+<br>
+Setting:<br>
+i) Host Only<br>
+ii) Manual (192.168.10.3 , 24, 192.168.10.1)<br>
+<br>
+Client Side:<br>
+<br>
+Setting:<br>
+i) NAT<br>
+ii) DHCP<br>
+<br>
+Commands:<br>
+i) sudo yum install -y nfs*<br>
+ii) sudo showmount -e 192.168.10.3<br>
+iii) sudo mkdir /pqr<br>
+ix) sudo mount 192.168.10.3:/xyz  /pqr<br>
+<br>
+
